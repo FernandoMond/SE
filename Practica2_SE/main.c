@@ -132,6 +132,8 @@ void leds_ini()
 
 int hitcount(volatile unsigned int* index,int green_led_on){
 	int result = 0;
+	
+	//Miro si hay algun boton apretado, y segun sea el caso, controlo el resultado y apago el led.
 	if (sw1_check()){
 		(*index)++;
 		if (green_led_on){
@@ -142,15 +144,16 @@ int hitcount(volatile unsigned int* index,int green_led_on){
 			led_red_toggle();
 			}
 	}
-	if(sw2_check()){
-		(*index)++;
-		if(green_led_on){
-			led_green_toggle();
-			result = 1;
-		}else {
-			result = 100;
-			led_red_toggle();
+	else {if(sw2_check()){
+			(*index)++;
+			if(green_led_on){
+				led_green_toggle();
+				result = 1;
+			}else {
+				result = 100;
+				led_red_toggle();
 			}
+		}
 	}
 	return result;
 }
@@ -179,6 +182,7 @@ int main(void)
       // [...]
       //
       green_led_on = 1;
+      //Controlo si ya se ha encendido el led antes
       if (!round_toggle){
       	led_green_toggle();
 	round_toggle = 1;      
@@ -190,7 +194,7 @@ int main(void)
       // [...]
       //
       green_led_on = 0;
-      
+      //Controlo si ya se ha encendido el led antes
       if (!round_toggle){
       	led_red_toggle();
       	round_toggle = 1;
@@ -200,6 +204,7 @@ int main(void)
     // [...]
     aux = hitcount(&index,green_led_on);
     result += aux;
+    //Si se detecta pulsación, hay que encender el led correspondiente en la siguiente iteración
     if (aux){
     	round_toggle = 0;
     }
