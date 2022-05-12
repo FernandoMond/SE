@@ -1,17 +1,11 @@
-Implementa un pequeno xogo coa placa: o xogo consiste en que o usuario
-ten que premer no botón correspondente ao LED que a placa teña acendido
-momento.
+El Cronometro tiene 2 modos de funcionamiento.
+En el primero, se edita el tiempo inicial de la cuenta atrás.
+Para ello se usa el botón iderecho para incrementar en 1 unidad el dígito a modificar.
+Con el botón izquierdo podemos avanzar hacia los siguiente dígitos.
+El orden es: Unidades de segundo - Decenas de segundo - Unidades de minuto - Decenas de minuto.
 
-- O botón esquerdo (sw2/sw3) correponde á luz vermella (luz esquerda)
-  e o botón dereito (sw1) á luz dereita.
-
-- A xestión da E/S cos botóns farase con interrupcións.
-
-- Só unha das luces pode estar acendida en cada momento.
-
-- Cóntanse os acertos e os erros durante a secuencia completa, e vanse
-  actualizando na pantalla LCD con este formato: hits:misses
-
-- Ao rematar a secuencia non se admiten máis pulsacións, e o resultado
-  final (que xa non se actualizará) móstrase pestanexando no LCD,
-  mantendo o mesmo formato.
+Al pulsar el botón izquierdo una vez estamos en las decenas de segundo, se pasa al segundo modo.
+Este modo empieza en pausa, y con el botón derecho podemos comenzar la cuenta atrás.
+Este mismo boton permite detener la cuenta atrás y reanudarla cuantas veces queramos.
+Cuando la cuenta atrás está detenida, podemos usar el boton izquierdo para resetear el contador a cero y volver al estado inicial.
+Cuando la cuenta atrás finaliza, tambien vuelve al estado inicial
